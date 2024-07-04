@@ -65,6 +65,19 @@
                             <label>Password</label>
                             <input class="form-control" id="password" name="password" type="password" placeholder="********">
                         </div>
+                        {{-- @if(session()->get('level') == 'admin') --}}
+                        {{-- @dd(session()->get('level')); --}}
+                        {{-- <div class="form-group">
+                            <label>Level</label>
+                            <select class="form-control" name="level" id="level">
+                                <option value="" disabled selected>--Pilih--</option>
+                                <option value="users">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div> --}}
+                        {{-- @endif --}}
+                    </div>
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label>Status Akun</label>
                             <select class="form-control" name="status" id="status">
@@ -73,9 +86,6 @@
                                 <option value="Belum Verifikasi">Belum Verifikasi</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        
                         <div class="form-group">
                             <label>Alamat</label>
                             <textarea class="textarea_editor form-control border-radius-0" placeholder="Masukan Alamat" name="alamat" id="alamat" required></textarea>
@@ -163,6 +173,8 @@
             $('#username').val(data.username);
             $('#umur').val(data.umur);
             $('#alamat').val(data.alamat);
+            // $('#level').val(data.level);
+            
             // console.log(data.alamat);
         }
 

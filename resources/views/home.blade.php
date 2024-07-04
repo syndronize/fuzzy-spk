@@ -2,7 +2,7 @@
 @section('title',('Home'))
 @section('content')
 <div class="min-height-200px">
-    <div class="page-header">
+    {{-- <div class="page-header">
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="title">
@@ -20,8 +20,8 @@
             </div>
         </div>
         
-    </div>
-    <div class="row">
+    </div> --}}
+    {{-- <div class="row">
         <div class="col-xl-8 mb-30">
             <div class="card-box height-100-p pd-20">
                 <h2 class="h4 mb-20">5 Skor Tertinggi</h2>
@@ -34,8 +34,8 @@
                 <div id="chartx"></div>
             </div>
         </div>
-    </div>
-</div>
+    </div> --}}
+{{-- </div> --}}
 @section('script')
 {{-- <script src="{{('/')}}asset/deskapp/src/plugins/highcharts-6.0.7/code/highcharts.js"></script> --}}
 {{-- <script src="{{('/')}}asset/deskapp/src/plugins/apexcharts/apexcharts.min.js"></script> --}}

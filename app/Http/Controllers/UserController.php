@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
+use Session;
 
 
 class UserController extends Controller
 {
     public function index()
     {
+        // dd(session()->get('level'));
         return view('user.index');
     }
 
@@ -22,7 +24,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'username' => 'required',
-            'level' => 'required',
+            // 'level' => 'required',
             'umur' => 'required',
             'alamat' => 'required',
         ]);
@@ -36,7 +38,7 @@ class UserController extends Controller
                     'alamat' => $request->alamat,
                     'password' => Hash::make($request->password),
                 );
-                dd($data);
+                // dd($data);
                 $simpan = DB::table('users')->insert($data);
             }else{
                 return response()->json(['bool' => false,'alert' => 'Password is Required']);
@@ -46,23 +48,47 @@ class UserController extends Controller
             // var_dump("asdasd",$request->password);die;
             if($x != null){
                 // dd('gagal');
-                $data = array(
-                    'name' => $request->name,
-                    'username' => $request->username,
-                    'level' => $request->level,
-                    'umur' => $request->umur,
-                    'status' => $request->status,
-                    'alamat' => $request->alamat,
-                    'password' => Hash::make($request->password),
-                );
+                if (session()->get('level') == 'admin') {
+                    $data = array(
+                        'name' => $request->name,
+                        'username' => $request->username,
+                        // 'level' => $request->level,
+                        'umur' => $request->umur,
+                        'status' => $request->status,
+                        'alamat' => $request->alamat,
+                        'password' => Hash::make($request->password),
+                    );
+                }else{
+
+                    $data = array(
+                        'name' => $request->name,
+                        'username' => $request->username,
+                        // 'level' => $request->level,
+                        'umur' => $request->umur,
+                        'status' => $request->status,
+                        'alamat' => $request->alamat,
+                        'password' => Hash::make($request->password),
+                    );
+                }
             }else{
-                $data = array(
-                    'name' => $request->name,
-                    'username' => $request->username,
-                    'level' => $request->level,
-                    'umur' => $request->umur,
-                    'alamat' => $request->alamat,
-                );
+                if (session()->get('level') == 'admin') {
+
+                    $data = array(
+                        'name' => $request->name,
+                        'username' => $request->username,
+                        // 'level' => $request->level,
+                        'umur' => $request->umur,
+                        'alamat' => $request->alamat,
+                    );
+                }else{
+                    $data = array(
+                        'name' => $request->name,
+                        'username' => $request->username,
+                        // 'level' => $request->level,
+                        'umur' => $request->umur,
+                        'alamat' => $request->alamat,
+                    );
+                }
             }
             $simpan = DB::table('users')
             ->where('id',$id)
@@ -76,7 +102,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'username' => 'required',
-            'level' => 'required',
+            // 'level' => 'required',
             'umur' => 'required',
             'status' => 'required',
             'alamat' => 'required',
@@ -88,7 +114,7 @@ class UserController extends Controller
             $data = array(
                 'name' => $request->name,
                 'username' => $request->username,
-                'level' => $request->level,
+                // 'level' => $request->level,
                 'alamat' => $request->alamat,
                 'status' => $request->status,
                 'password' => Hash::make($request->password),
@@ -97,7 +123,7 @@ class UserController extends Controller
             $data = array(
                 'name' => $request->name,
                 'username' => $request->username,
-                'level' => $request->level,
+                // 'level' => $request->level,
                 'umur' => $request->umur,
                 'status' => $request->status,
                 'alamat' => $request->alamat,
