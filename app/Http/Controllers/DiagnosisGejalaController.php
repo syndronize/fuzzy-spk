@@ -12,7 +12,14 @@ class DiagnosisGejalaController extends Controller
         $data['gejala'] = DB::table('gejalas')->get();
         return view('diagnosisgejala.index',$data);
     }
-
+    public function data(){
+        $data['dg'] = DB::table('diagnosagejalas')
+                        ->leftJoin('diagnoses', 'diagnosagejalas.diagnoses_id', '=', 'diagnoses.id')
+                        ->leftJoin('gejalas', 'diagnosagejalas.gejalas_id', '=', 'gejalas.id')
+                        ->select('diagnoses.nama as diagnosa', 'gejalas.nama as gejala', 'diagnosagejalas.weight')
+                        ->get();
+        return view('diagnosisgejala.isidata',$data);
+    }
     public function diagnose(Request $request){
         $symptom_map = [
             'status1' => 1, 

@@ -27,18 +27,30 @@
     <!-- Simple Datatable start -->
     <div class="card-box mb-30">
         <div class="pd-20">
-            <h4 class="text-blue ">Diagnosis Gejalamu
+            <h4 class="text-black ">Diagnosis Gejalamu
                 <button type="button" onclick="diagnose()" class="btn btn-outline-dark mx-2"><i class="icon-copy dw dw-analytics-5"></i></i></button> 
             </h4>
         </div>
+    </div>
+    <div class="card-box mb-30">
+        <div class="pd-20">
+            <h4 class="text-black ">Dataset Diagnosa Gejala
+            </h4>
+        </div>
+        <div class="pb-20">
+            <div id="isiData">
+
+            </div>
+        </div>
         
     </div>
+   
 </div>
 <div class="modal fade bs-example-modal-lg" id="modalDiagnose" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+                <h4 class="modal-title" id="myLargeModalLabel">Questioner</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
@@ -187,6 +199,14 @@
     function closeReload(){
         location.reload();
     }
+
+    function tampilData(){
+        $('#isiData').load('{{route('dg.data')}}');
+
+    }
+    $(document).ready(function(){
+        tampilData();
+    })
 </script>
 @endsection
 @endsection
