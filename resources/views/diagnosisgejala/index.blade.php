@@ -58,8 +58,17 @@
                     <form class="tab-wizard wizard-circle wizard">
                         <h5></h5>
                         <section>
-                            <p>pilih gejala yang kamu alami dengan mencentang gejalanya, pilih next untuk pilihan berikutnya dan pilih submit untuk mengakhiri test</p>
+                            <p>pilih gejala yang kamu alami dengan mencentang gejalanya, pilih next untuk pilihan berikutnya dan pilih submit untuk mengakhiri test.</p>
+                            <p>
+                                <div class="form-group row">
+                                    <label class="col-sm-12 col-md-2 col-form-label">Nama Client</label>
+                                    <div class="col-sm-12 col-md-10">
+                                        <input class="form-control" id="namaClient" type="text" placeholder="Klik Disini untuk Nama Client">
+                                    </div>
+                                </div>
+                            </p>
                         </section>
+                        
                         @foreach($gejala as $key => $data)
                         <h5></h5>
                         <section>
@@ -138,6 +147,7 @@
         var status12 = document.getElementById('status12');
         var status13 = document.getElementById('status13');
         var status14 = document.getElementById('status14');
+        var nama = $('#namaClient').val();
         var url = "{{url('/getdiagnose')}}"
         $.ajax({
             url : url,
@@ -187,8 +197,29 @@
                         }
                     }]
                 };
+
                 var chart = new ApexCharts(document.querySelector("#chartresult"), optionsresult);
                 chart.render();
+
+                var urlsave = "{{url('/saveclient')}}"
+
+                $.ajax({
+                    url : urlsave,
+                    type : "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Ensure this meta tag is in your HTML head
+                    },
+                    dataType : "JSON",
+                    data : {
+                        depresi : depresi,
+                        bipolar : bipolar,
+                        skizofernia : skizo,
+                        gangguan : gangguan,
+                        nama : nama
+                    },success : function(res){
+                        console.log(res);
+                    }
+                })
 
                 
             }

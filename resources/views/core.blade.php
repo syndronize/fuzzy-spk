@@ -152,7 +152,12 @@
 					</li>
 					<li>
 						<a href="{{route('user.index')}}" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-user1"></span><span class="mtext">Pengguna</span>
+							<span class="micon dw dw-user1"></span><span class="mtext">User</span>
+						</a>
+					</li>
+					<li>
+						<a href="{{route('client.index')}}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-user-2"></span><span class="mtext">Client</span>
 						</a>
 					</li>
 					<li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GejalaController;
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DiagnosisGejalaController;
+use App\Http\Controllers\ClientController;
 
 
 Route::middleware('belum_login')->group(function () {
@@ -40,5 +41,8 @@ Route::middleware('sudah_login')->group(function () {
     Route::get('/diagnosisgejala',[DiagnosisGejalaController::class,'index'])->name('diagnosisgejala.index');
     Route::get('/datadg',[DiagnosisGejalaController::class,'data'])->name('dg.data');
     Route::post('/getdiagnose',[DiagnosisGejalaController::class,'diagnose'])->name('diagnosisgejala.diagnose');
+    Route::post('/saveclient',[DiagnosisGejalaController::class,'client'])->name('save.client');
     // Route::get('/diagnoseresult',[DiagnosisGejalaController::class,''])->name('diagnosisgejala.diagnose');
+    
+    Route::get('/client',[ClientController::class,'index'])->name('client.index');
 });

@@ -81,23 +81,37 @@ class DiagnosisGejalaController extends Controller
         // Calculate total weight to normalize the scores
         $total_weight = array_sum($diagnosis_scores);
         // dd($total_weight);  
-$diagnosis_scores = array_map(function ($score) use ($total_weight) {
-    return $total_weight > 0 ? ($score / $total_weight) * 100 : 0;
-}, $diagnosis_scores);
-    // dd($diagnosis_scores);
-    $diagnosis_scores = collect($diagnosis_scores);
-    // dd($diagnosis_scores);
-        // Retrieve diagnosis names
-        $diagnosis_names = DB::table('diagnoses')->pluck('nama', 'id');
-    //    dd($diagnosis_names);
-        $diagnosis_scores = $diagnosis_scores->mapWithKeys(function ($score, $id) use ($diagnosis_names) {
-            return [$diagnosis_names[$id] => $score];
-        });
-        // Return the result view with diagnosis scores
-        // dd($diagnosis_scores);
-        $data['result'] = $diagnosis_scores;
-        // return view('diagnosis.result', $data);
-        return response()->json($diagnosis_scores);
+        $diagnosis_scores = array_map(function ($score) use ($total_weight) {
+            return $total_weight > 0 ? ($score / $total_weight) * 100 : 0;
+        }, $diagnosis_scores);
+            // dd($diagnosis_scores);
+            $diagnosis_scores = collect($diagnosis_scores);
+            // dd($diagnosis_scores);
+                // Retrieve diagnosis names
+                $diagnosis_names = DB::table('diagnoses')->pluck('nama', 'id');
+            //    dd($diagnosis_names);
+                $diagnosis_scores = $diagnosis_scores->mapWithKeys(function ($score, $id) use ($diagnosis_names) {
+                    return [$diagnosis_names[$id] => $score];
+                });
+                // Return the result view with diagnosis scores
+                // dd($diagnosis_scores);
+                $data['result'] = $diagnosis_scores;
+                // return view('diagnosis.result', $data);
+                return response()->json($diagnosis_scores);
+    }
+
+    public function client(Request $req){
+        $data = [
+            'nama' => $req->nama,
+            'depresi' => $req->depresi, 
+            'skizofernia' => $req->skizofernia, 
+            'bipolar' => $req->bipolar, 
+            'gangguan_kecemasaan' => $req->gangguan 
+        ];
+
+        $save = DB::table('clients')->insert($data);
+        return response()->json(['bool' =>$save]);
+        
     }
     
 }

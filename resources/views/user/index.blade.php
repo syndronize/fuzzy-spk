@@ -132,7 +132,7 @@
 
         function tambahDatac(){
             id=""
-            $('#title').html('Tambah Data Pengguna');
+            $('#title').html('Tambah Data User');
             $('#modalAdd').modal('show');
         }
         
@@ -166,7 +166,7 @@
             console.log(data);
             id = data.id
 
-            $('#title').html('Edit Data Pengguna')
+            $('#title').html('Edit Data User')
             $('#modalAdd').modal('show');
 
             $('#name').val(data.name);
