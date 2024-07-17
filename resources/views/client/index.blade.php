@@ -35,10 +35,10 @@
                         <tr>
                             <th class="table-plus datatable-nosort">No.</th>
                             <th>Nama Client</th>
-                            <th>Depresi</th>
-                            <th>Skizofernia</th>
-                            <th>Bipolar</th>
-                            <th>Gangguan Kecemasaan</th>
+                            <th>Normal</th>
+                            <th>Ringan</th>
+                            <th>Sedang</th>
+                            <th>Berat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,10 +46,10 @@
                         <tr>
                             <td class="table-plus">{{$key+1}}</td>
                             <td>{{$data->nama}}</td>
-                            <td>{{$data->depresi}} %</td>
-                            <td>{{$data->skizofernia}} %</td>
-                            <td>{{$data->bipolar}} %</td>
-                            <td>{{$data->gangguan_kecemasaan}} %</td>
+                            <td>{{$data->normal}} </td>
+                            <td>{{$data->ringan}} </td>
+                            <td>{{$data->sedang}} </td>
+                            <td>{{$data->berat}} </td>
                             
                 
                         </tr>

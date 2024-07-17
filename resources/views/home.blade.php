@@ -2,40 +2,49 @@
 @section('title',('Home'))
 @section('content')
 <div class="min-height-200px">
-    {{-- <div class="page-header">
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="title">
-                    <h4>Title</h4>
-                </div>
-                <nav aria-label="breadcrumb" role="navigation">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Title</li>
-                    </ol>
-                </nav>
+    <div class="row">
+        <div class="col-xl-6 mb-30">
+            <div class="card-box height-100-p pd-20">
+                <img src="{{'/'}}images/depress.jpg"  alt="">
             </div>
-            <div class="col-md-6 col-sm-12 text-right">
-                
+        </div>
+        <div class="col-xl-6 mb-30">
+            <div class="card-box height-100-p pd-20">
+                <img src="{{'/'}}images/depressred.jpg"  alt="">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 mb-30">
+            <div class="card-box height-100-p pd-20">
+                <h2 class="h4 mb-20">Mengenal Depresi</h2>
+                <p>
+                    Depresi adalah gangguan suasana hati (mood) yang ditandai dengan perasaan sedih yang mendalam dan kehilangan minat terhadap hal-hal yang disukai. Seseorang dinyatakan mengalami depresi jika sudah 2 minggu merasa sedih, putus harapan, atau tidak berharga.
+
+                    Depresi yang dibiarkan terus berlanjut dan tidak mendapatkan penanganan dapat menyebabkan terjadinya penurunan produktifitas kerja, gangguan hubungan sosial, hingga munculnya keinginan untuk bunuh diri.
+                </p>
+                <span style="font-weight: bold">Gejala </span>
+                <p>
+                    Seseorang yang depresi umumnya menunjukkan ciri-ciri psikologi dan fisik tertentu. Ciri psikologis orang yang depresi adalah rasa cemas dan khawatir yang berlebihan, emosi yang tidak stabil, serta rasa putus asa atau frustrasi.
+
+                    Sementara itu, ciri-ciri fisik pada seseorang yang depresi adalah selalu merasa lelah dan tak bertenaga, pusing dan nyeri tanpa penyebab yang jelas, serta menurunnya selera makan.
+                </p>
+                <span style="font-weight: bold">Penyebab </span>
+                <p>
+                    Depresi lebih sering dialami oleh orang dewasa. Penyebabnya diduga terkait dengan faktor genetik, hormon, dan zat kimia di otak. Beberapa faktor pemicu depresi antara lain:
+                </p>
+                <ul style="margin-left:20px">
+
+                    <li>1. Peristiwa traumatis</li>
+                    <li>2. Tekanan batin, misalnya karena masalah keuangan atau masalah rumah tangga</li>
+                    <li>3. Pola pikir yang salah, seperti toxic positivity</li>
+                    <li>4. Hilangnya kegiatan atau tujuan hidup setelah pensiun (post power syndrome)</li>
+                </ul>
             </div>
         </div>
         
-    </div> --}}
-    {{-- <div class="row">
-        <div class="col-xl-8 mb-30">
-            <div class="card-box height-100-p pd-20">
-                <h2 class="h4 mb-20">5 Skor Tertinggi</h2>
-                <div id="chart5"></div>
-            </div>
-        </div>
-        <div class="col-xl-4 mb-30">
-            <div class="card-box height-100-p pd-20">
-                <h2 class="h4 mb-20">Jumlah Anggota</h2>
-                <div id="chartx"></div>
-            </div>
-        </div>
-    </div> --}}
-{{-- </div> --}}
+    </div>
+</div>
 @section('script')
 {{-- <script src="{{('/')}}asset/deskapp/src/plugins/highcharts-6.0.7/code/highcharts.js"></script> --}}
 {{-- <script src="{{('/')}}asset/deskapp/src/plugins/apexcharts/apexcharts.min.js"></script> --}}

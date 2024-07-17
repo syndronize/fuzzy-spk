@@ -100,8 +100,10 @@
 
                 <div class="pd-20 card-box height-100-p">
 
-                <h4 class="h4 text-blue">Result Chart</h4>
-                <div id="chartresult"></div>
+                    <p>
+                        Hasil Questioner adalah sebagai berikut :
+                        <span id="hasil" ></span>
+                    </p>
                 </div>
             </div>
             </div>
@@ -147,6 +149,10 @@
         var status12 = document.getElementById('status12');
         var status13 = document.getElementById('status13');
         var status14 = document.getElementById('status14');
+        var status15 = document.getElementById('status15');
+        var status16 = document.getElementById('status16');
+        var status17 = document.getElementById('status17');
+        var status18 = document.getElementById('status18');
         var nama = $('#namaClient').val();
         var url = "{{url('/getdiagnose')}}"
         $.ajax({
@@ -170,36 +176,19 @@
                 status11 : status11.checked,
                 status12 : status12.checked,
                 status13 : status13.checked,
-                status14 : status14.checked
+                status14 : status14.checked,
+                status15 : status15.checked,
+                status16 : status16.checked,
+                status17 : status17.checked,
+                status18 : status18.checked,
             },success : function(res){
-                var depresi = res.Depresi; 
-                var bipolar = res.Bipolar; 
-                var skizo = res.Skizofrenia; 
-                var gangguan = res["Gangguan Kecemasan"]; 
+                console.log(res);
                 $('#modalDiagnose').modal('hide');
+                $('#hasil').html(`<br>Berdasarkan hasil diagnosa, anda dinyatakan gejala <b>depresi ${res.hasil}</b> dengan skor indikator <b>${res.nilai}</b>`)
                 $('#modalResult').modal('show');
-                // status1.checked = false;
-                var optionsresult = {
-                    series: [depresi, bipolar, skizo, gangguan],
-	                labels: ['Depresi', 'Bipolar', 'Skizofrenia', 'Gangguan Kecemasan'],
-                    chart: {
-                        type: 'donut',
-                    },
-                    responsive: [{
-                        breakpoint: 480,
-                        options: {
-                            chart: {
-                                width: 100
-                            },
-                            legend: {
-                                position: 'bottom'
-                            }
-                        }
-                    }]
-                };
-
-                var chart = new ApexCharts(document.querySelector("#chartresult"), optionsresult);
-                chart.render();
+                
+                var hasil = res.hasil
+                var nilai = res.nilai
 
                 var urlsave = "{{url('/saveclient')}}"
 
@@ -211,13 +200,11 @@
                     },
                     dataType : "JSON",
                     data : {
-                        depresi : depresi,
-                        bipolar : bipolar,
-                        skizofernia : skizo,
-                        gangguan : gangguan,
+                        hasil : hasil,
+                        nilai : nilai,
                         nama : nama
                     },success : function(res){
-                        console.log(res);
+                        // location.reload()
                     }
                 })
 
