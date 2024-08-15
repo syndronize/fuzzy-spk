@@ -40,6 +40,7 @@ class DashboardController extends Controller
             'password' => Hash::make($r->password),
             'umur' => $r->umur,
             'alamat' => $r->alamat,
+            
         );
         $simpan = DB::table('users')->insert($data);
         if($simpan){
@@ -57,12 +58,12 @@ class DashboardController extends Controller
         ]);
         $user = DB::table('users')
                 ->where('username',$r->username)
-                ->where('status','=','Verifikasi')
                 ->first();
         if($user){
             if(Hash::check($r->password,$user->password)){
                 session()->put('id',$user->id);
                 session()->put('name',$user->name);
+                session()->put('username',$user->username);
                 session()->put('level',$user->level);
                 session()->put('status',$user->status);
                 return redirect('/dashboard')->with('success','Selamat Datang');

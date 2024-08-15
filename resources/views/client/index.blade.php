@@ -43,16 +43,19 @@
                     </thead>
                     <tbody>
                         @foreach($client as $key => $data)
-                        <tr>
-                            <td class="table-plus">{{$key+1}}</td>
-                            <td>{{$data->nama}}</td>
-                            <td>{{$data->normal}} </td>
-                            <td>{{$data->ringan}} </td>
-                            <td>{{$data->sedang}} </td>
-                            <td>{{$data->berat}} </td>
-                            
-                
-                        </tr>
+                        @if (Session()->get('username') === $data->nama || Session()->get('level') == 'admin')
+                            <tr>
+                                <td class="table-plus">{{$key+1}}</td>
+                                <td>{{$data->nama}}</td>
+                                <td>{{$data->normal}} </td>
+                                <td>{{$data->ringan}} </td>
+                                <td>{{$data->sedang}} </td>
+                                <td>{{$data->berat}} </td>
+                                
+                                
+                            </tr>
+                        @endif
+                        
                 
                         @endforeach
                     </tbody>

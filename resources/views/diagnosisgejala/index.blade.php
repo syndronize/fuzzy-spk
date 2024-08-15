@@ -62,9 +62,16 @@
                             <p>
                                 <div class="form-group row">
                                     <label class="col-sm-12 col-md-2 col-form-label">Nama Client</label>
+                                    @if (Session()->get('level') == 'users')
+                                    <div class="col-sm-12 col-md-10">
+                                        <input class="form-control" id="namaClient" type="text" value="{{Session()->get('username')}}" readonly>
+                                    </div>    
+                                    @else
+                                        
                                     <div class="col-sm-12 col-md-10">
                                         <input class="form-control" id="namaClient" type="text" placeholder="Klik Disini untuk Nama Client">
                                     </div>
+                                    @endif
                                 </div>
                             </p>
                         </section>
